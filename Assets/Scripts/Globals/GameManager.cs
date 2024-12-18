@@ -1,3 +1,4 @@
+using HouseBuilding.Base;
 using SantaSatisfaction;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Globals
 
         [Header("Managers and Controllers")]
         public SatisfactionController SatisfactionController;
+        public HouseElementController HouseElementController;
 
         private void Awake()
         {
