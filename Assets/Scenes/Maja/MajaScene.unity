@@ -118,7 +118,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 0} 
 --- !u!1 &26827547
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,11 +632,11 @@ GameObject:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
-  m_Component:
+  m_Component: 
   - component: {fileID: 152788984}
   - component: {fileID: 152788985}
   m_Layer: 5
-  m_Name: Santasfaction Slider
+  m_Name: Santasfaction Slider 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabAsset: {fileID: 0} 
   m_GameObject: {fileID: 152788983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1310,7 +1310,7 @@ Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabAsset: {fileID: 0} 
   m_GameObject: {fileID: 470605640}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
@@ -1319,7 +1319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0} 
 --- !u!114 &470605643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3011,18 +3011,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1808141135}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1846953077
+--- !u!1 &1846953077 
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
-  m_Component:
+  m_Component: 
   - component: {fileID: 1846953081}
   - component: {fileID: 1846953080}
   - component: {fileID: 1846953079}
-  - component: {fileID: 1846953078}
+  - component: {fileID: 1846953078} 
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -3140,13 +3140,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846953077}
-  serializedVersion: 2
+  serializedVersion: 2 
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 6, z: 1.5}
+  m_LocalPosition: {x: 0, y: 6, z: 1.5} 
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 0} 
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!1 &1881120882
 GameObject:
@@ -3464,7 +3464,7 @@ Transform:
   m_LocalScale: {x: 8, y: 0.2, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 103826016}
+  m_Father: {fileID: 103826016} 
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2064935163
 GameObject:
@@ -3578,10 +3578,10 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 470605642}
+  - {fileID: 470605642} 
   - {fileID: 1743753514}
   - {fileID: 103826016}
   - {fileID: 611018282}
   - {fileID: 1846953081}
   - {fileID: 1882645350}
-  - {fileID: 867829797}
+  - {fileID: 867829797} 
