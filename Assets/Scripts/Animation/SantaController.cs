@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Globals;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -12,12 +13,12 @@ public class SantaController : MonoBehaviour
     
     [Range(0f,1f)]
     [SerializeField] private float animationFrame = 0f;
-    
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        visualEffect.Play();
+        Destroy(other.gameObject.transform.parent.gameObject);
+
+        GameManager.Instance.SatisfactionController.IncreaseSatisfaction();
         
         if (animationFrame < 1f)
             StartCoroutine(PlayEatingAnimation());
@@ -29,15 +30,16 @@ public class SantaController : MonoBehaviour
         float animationTime = 1f;
 
         float animationIncrement = 0.1f;
+        float originalAnimationFrame = animationFrame;
 
         while (currentTime <= animationTime)
         {
             currentTime += Time.deltaTime;
-            animationFrame = animationIncrement * currentTime / animationTime;
+            animationFrame = originalAnimationFrame + (animationIncrement * currentTime / animationTime);
             santaAnimator.Play(bloatingAnimationName, 0, animationFrame);
             yield return null;
         }
         
-        animationFrame = Mathf.Clamp01(animationFrame + animationIncrement);
+        animationFrame = Mathf.Clamp01(originalAnimationFrame + animationIncrement);
     }
 }
