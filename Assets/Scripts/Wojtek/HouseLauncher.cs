@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 
 public class HouseLauncher : MonoBehaviour
 {
-    private Trajectory trajectory;
+    [SerializeField] private Trajectory trajectory;
 
-    private Rigidbody currentHouseRigidbody;
+    private GameObject currentObject;
     [SerializeField] private float angularVelocityStrength;
     
     private void OnEnable()
@@ -18,15 +18,19 @@ public class HouseLauncher : MonoBehaviour
 
     private void SubscribeToHouseBuild(HouseChecker checker)
     {
-        currentHouseRigidbody = checker.GetComponent<Rigidbody>();
+        currentObject = checker.gameObject;
         checker.HouseBuilt += ThrowObject;
     }
     
     private void ThrowObject()
     {
-        currentHouseRigidbody.linearVelocity = trajectory.Velocity;
-        currentHouseRigidbody.angularVelocity = GetAngularVelocity();
-        currentHouseRigidbody.useGravity = true;
+        Rigidbody houseRB = currentObject.AddComponent<Rigidbody>();
+        
+        houseRB.isKinematic = false;
+        houseRB.useGravity = true;
+        
+        houseRB.linearVelocity = trajectory.Velocity;
+        houseRB.angularVelocity = GetAngularVelocity();
     }
 
     private Vector3 GetAngularVelocity()
