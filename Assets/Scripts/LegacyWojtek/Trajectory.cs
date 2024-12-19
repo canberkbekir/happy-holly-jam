@@ -13,25 +13,18 @@ public class Trajectory : MonoBehaviour
     [SerializeField] private int drawDistance;
     
     private Vector3 Position => transform.position;
-    private Vector3 Velocity => transform.forward * launchSpeed;
+    public Vector3 Velocity => transform.forward * launchSpeed;
     private Vector3 Acceleration => Physics.gravity;
 
     
     private readonly List<Vector3> positions = new List<Vector3>();
-
-    private void Awake()
-    {
-        startingPosition = projectile.position;
-    }
-
-
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            LaunchObject();
-        if (Input.GetKeyDown(KeyCode.Q))
-            ResetObject();
-
+        // if (Input.GetKeyDown(KeyCode.Space))
+        //     LaunchObject();
+        // if (Input.GetKeyDown(KeyCode.Q))
+        //     ResetObject();
     }
     
     private void LaunchObject()
