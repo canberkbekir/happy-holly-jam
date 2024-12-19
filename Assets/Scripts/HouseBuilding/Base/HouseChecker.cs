@@ -25,6 +25,7 @@ namespace HouseBuilding.Base
                 {
                     HouseBuilt?.Invoke();
                     Debug.Log("House built");
+                    Destroy(this.gameObject);
                 } 
          }
     }
