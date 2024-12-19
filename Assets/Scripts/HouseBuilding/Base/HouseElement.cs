@@ -58,20 +58,22 @@ namespace HouseBuilding.Base
         
         private void OnMouseDown()
         {
-              if(_isPlaced)
-              {
+            if(_isPlaced)
+            {
                 return;
-              }
+            }
             
-              if(_houseElementController.PartType == HousePartType.Null)
-              {
-                  return;
-              }
-              
-      
-              if (_houseElementController.PartType != _housePartType) return;
-              UnHighlight();
-               _houseElementController.SetHousePartType(HousePartType.Null); 
+            
+           if(_houseElementController.PartType == HousePartType.Null)
+           {
+               return;
+           }
+           
+
+           if (_houseElementController.PartType != _housePartType) return;
+           UnHighlight();
+           
+
         }
        
        
