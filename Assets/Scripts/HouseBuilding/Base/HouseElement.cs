@@ -65,9 +65,7 @@ namespace HouseBuilding.Base
            
 
            if (_houseElementController.PartType != _housePartType) return;
-           UnHighlight();
-            _houseElementController.SetHousePartType(HousePartType.Null);
-           
+           UnHighlight();          
 
         }
        
