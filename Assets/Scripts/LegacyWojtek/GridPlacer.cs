@@ -9,7 +9,7 @@ public class GridPlacer : MonoBehaviour
     [SerializeField] private Material gridMaterial;
 
     [SerializeField] private List<GameObject> objectsToPlace = new List<GameObject>();
-    [FormerlySerializedAs("index")] [SerializeField] private int currentIndex;
+    [SerializeField] private int currentIndex;
     
     [SerializeField] private float gridSizeX;
     [SerializeField] private float gridSizeZ;
@@ -81,17 +81,14 @@ public class GridPlacer : MonoBehaviour
         
         float x = finalPosition.x.Round(gridSizeX);
         float y;
-
+        float z = finalPosition.z.Round(gridSizeZ);
+        
         if (Mathf.Abs(hit.point.y - Mathf.Round(hit.point.y)) < 0.01f)
             y = Mathf.Round(hit.point.y);
         else
            y = Mathf.FloorToInt(hit.point.y);
-
-        y += .5f;
         
-        float z = finalPosition.z.Round(gridSizeZ);
-        
-        currentPosition = new Vector3(x, y, z);
+        currentPosition = new Vector3(x, y + .5f, z);
         currentScale = new Vector3(1/gridSizeX, 1, 1/gridSizeZ);
 
         SetCalculateValues();
@@ -102,21 +99,20 @@ public class GridPlacer : MonoBehaviour
         visualizeObject.transform.position = currentPosition;
         visualizeObject.transform.localScale = currentScale;
     }
-
-    // private void OnValidate()
-    // {
-    //     Vector2 gridSize = new Vector2(gridSizeX * 10, gridSizeZ * 10);
-    //     
-    //     float dividerForGridOffsetX = 2 * gridSizeX;
-    //     float dividerForGridOffsetZ = 2 * gridSizeZ;
-    //     
-    //     Vector2 gridOffset = new Vector2(gridSizeX / dividerForGridOffsetX, gridSizeZ / dividerForGridOffsetZ);
-    //     
-    //     gridMaterial.SetVector(GridSize, gridSize);
-    //     gridMaterial.SetVector(GridOffset, gridOffset);
-    //
-    //     UpdateObjectPositionAndScale();
-    // }
+    private void OnValidate()
+    {
+        Vector2 gridSize = new Vector2(gridSizeX * 10, gridSizeZ * 10);
+        
+        float dividerForGridOffsetX = 2 * gridSizeX;
+        float dividerForGridOffsetZ = 2 * gridSizeZ;
+        
+        Vector2 gridOffset = new Vector2(gridSizeX / dividerForGridOffsetX, gridSizeZ / dividerForGridOffsetZ);
+        
+        gridMaterial.SetVector(GridSize, gridSize);
+        gridMaterial.SetVector(GridOffset, gridOffset);
+    
+        UpdateObjectPositionAndScale();
+    }
 
     private void SpawnObject()
     {
@@ -129,16 +125,5 @@ public class GridPlacer : MonoBehaviour
         visualizeObject = null;
         visualizeObject = Instantiate(objectsToPlace[currentIndex]);
     }
-    
-    // private void OnDrawGizmos()
-    // {
-    //     Ray ray = new Ray(transform.position, transform.forward);
-    //
-    //     if (Physics.Raycast(ray, out RaycastHit hit))
-    //     {
-    //         SetObjectPosition(hit);
-    //         Gizmos.DrawLine(transform.position, hit.point);
-    //     }
-    // }
     
 }
