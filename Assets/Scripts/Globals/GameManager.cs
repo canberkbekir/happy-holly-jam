@@ -17,6 +17,8 @@ namespace Globals
         public HouseElementController HouseElementController;
         public HouseSpawnManager HouseSpawnManager;
         
+        public SantaController santaController;
+        
         private void Awake()
         {
             if (Instance == null)
@@ -27,6 +29,8 @@ namespace Globals
             {
                 Destroy(gameObject);
             }
+            
+            santaController = GameObject.FindFirstObjectByType<SantaController>();
         }
 
         public void RestartWholeGame()
