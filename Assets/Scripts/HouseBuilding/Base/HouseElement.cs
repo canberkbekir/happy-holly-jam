@@ -16,15 +16,13 @@ namespace HouseBuilding.Base
         public event Action OnPlaced;
         
         [Header("Settings")]
-        [SerializeField] private HousePartType _housePartType;
-        [SerializeField] private Material highlightMaterial;
-        [SerializeField] private Material defaultMaterial;
+        [SerializeField] private HousePartType _housePartType; 
         [SerializeField] private bool _isHighlighted;
         
         [Space]
-        [Header("References")]
-        [SerializeField] private Renderer _renderer;
-        
+        [Header("References")] 
+        [SerializeField] private GameObject highlightGameObject;
+        [SerializeField] private GameObject defaultGameObject;
         private HouseElementController _houseElementController;
         private bool _isPlaced = false;
         
@@ -46,18 +44,26 @@ namespace HouseBuilding.Base
         
         public void Highlight()
         { 
-            _renderer.material = highlightMaterial; 
+            highlightGameObject.SetActive(true);
+            defaultGameObject.SetActive(false); 
         }
         
         public void UnHighlight()
         {
-            _renderer.material = defaultMaterial;
+            highlightGameObject.SetActive(false);
+            defaultGameObject.SetActive(true); 
             _isPlaced = true; 
             OnPlaced?.Invoke();
         }
         
         private void OnMouseDown()
         {
+            if(_isPlaced)
+            {
+                return;
+            }
+            
+            
            if(_houseElementController.PartType == HousePartType.Null)
            {
                return;
@@ -65,7 +71,8 @@ namespace HouseBuilding.Base
            
 
            if (_houseElementController.PartType != _housePartType) return;
-           UnHighlight();          
+           UnHighlight();
+           
 
         }
        
