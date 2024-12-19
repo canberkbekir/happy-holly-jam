@@ -58,6 +58,8 @@ namespace HouseBuilding.Base
         
         private void OnMouseDown()
         {
+            Debug.Log("Testing");
+            
             if(_isPlaced)
             {
                 return;

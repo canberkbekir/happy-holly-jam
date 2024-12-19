@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Globals;
 using HouseBuilding.Base;
@@ -18,11 +19,19 @@ public class HouseSpawnManager : MonoBehaviour
 
     private GameObject currentHouse;
     
+    private bool skipInTheBeginning = true;
+    
     private void OnEnable()
     {
         GameManager.Instance.RestartGame += RestartGame;
+        GameManager.Instance.SatisfactionController.OnSatisfactionIsZero += ResetBool;
     }
-    
+
+    private void ResetBool()
+    {
+        skipInTheBeginning = true;
+    }
+
     public void SpawnHouseWave()
     {
         houseSpawnCount = Random.Range(1, houseToSpawn.Count);
@@ -37,6 +46,14 @@ public class HouseSpawnManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(WaitABitAndSpawn());
+    }
+
+    private IEnumerator WaitABitAndSpawn()
+    {
+        yield return new WaitForSeconds(skipInTheBeginning ? 0 : 1);
+        skipInTheBeginning = false;
+        
         houseSpawnCount--;
 
         int randomIndex = Random.Range(0, houseToSpawn.Count);

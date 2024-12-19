@@ -1,4 +1,5 @@
 using System;
+using Globals;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,6 +40,12 @@ namespace SantaSatisfaction
         private bool _isPaused;
 
         private void Awake()
+        {
+            _currentSatisfaction = maxSatisfaction;
+            GameManager.Instance.RestartGame += RestartSatisfaction;
+        }
+
+        private void RestartSatisfaction()
         {
             _currentSatisfaction = maxSatisfaction;
         }
@@ -107,5 +114,7 @@ namespace SantaSatisfaction
                 _isPaused = false;
             }
         }
+
+     
     }
 }
