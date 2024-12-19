@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Globals;
 using HouseBuilding.Base;
@@ -17,6 +18,8 @@ public class HouseSpawnManager : MonoBehaviour
     [SerializeField] private int houseSpawnCount;
 
     private GameObject currentHouse;
+    
+    private bool skipInTheBeginning = true;
     
     private void OnEnable()
     {
@@ -37,6 +40,14 @@ public class HouseSpawnManager : MonoBehaviour
             return;
         }
 
+        StartCoroutine(WaitABitAndSpawn());
+    }
+
+    private IEnumerator WaitABitAndSpawn()
+    {
+        yield return new WaitForSeconds(skipInTheBeginning ? 0 : 1);
+        skipInTheBeginning = false;
+        
         houseSpawnCount--;
 
         int randomIndex = Random.Range(0, houseToSpawn.Count);
