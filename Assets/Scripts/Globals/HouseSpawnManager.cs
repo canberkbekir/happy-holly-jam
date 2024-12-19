@@ -24,8 +24,14 @@ public class HouseSpawnManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.RestartGame += RestartGame;
+        GameManager.Instance.SatisfactionController.OnSatisfactionIsZero += ResetBool;
     }
-    
+
+    private void ResetBool()
+    {
+        skipInTheBeginning = true;
+    }
+
     public void SpawnHouseWave()
     {
         houseSpawnCount = Random.Range(1, houseToSpawn.Count);
