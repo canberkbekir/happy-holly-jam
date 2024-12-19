@@ -6,6 +6,8 @@ using UnityEngine.VFX;
 
 public class SantaController : MonoBehaviour
 {
+    public event Action OnGameWin;
+    
     [SerializeField] private VisualEffect visualEffect; 
     [SerializeField] private Animator santaAnimator;
 
@@ -41,5 +43,8 @@ public class SantaController : MonoBehaviour
         }
         
         animationFrame = Mathf.Clamp01(originalAnimationFrame + animationIncrement);
+        
+        if (animationFrame >= 1f)
+            OnGameWin!.Invoke();
     }
 }
