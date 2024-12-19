@@ -30,8 +30,7 @@ namespace HouseBuilding.Base
         public void SetHousePartType(HousePartType newHousePartType)
        {
            this._partType = newHousePartType;
-           OnHousePartTypeChanged?.Invoke(newHousePartType);
-           Debug.Log("House Part Type Changed to: " + newHousePartType);
+           OnHousePartTypeChanged?.Invoke(newHousePartType); 
        } 
          
        
