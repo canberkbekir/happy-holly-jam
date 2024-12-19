@@ -8,15 +8,12 @@ public class SantaController : MonoBehaviour
     [SerializeField] private VisualEffect visualEffect; 
     [SerializeField] private Animator santaAnimator;
 
-    private string animationName = "TESTNAME";
+    private string bloatingAnimationName = "Bloating";
     
     [Range(0f,1f)]
     [SerializeField] private float animationFrame = 0f;
     
-    private void Update()
-    {
-    }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
@@ -37,7 +34,7 @@ public class SantaController : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             animationFrame = animationIncrement * currentTime / animationTime;
-            santaAnimator.Play(animationName, 0, animationFrame);
+            santaAnimator.Play(bloatingAnimationName, 0, animationFrame);
             yield return null;
         }
         
