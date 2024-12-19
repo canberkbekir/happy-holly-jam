@@ -15,7 +15,7 @@ public class UIFunctions : MonoBehaviour
         GameManager.Instance.santaController.OnGameWin += GameWin;
     }
 
-    private void GameWin()
+    public void GameWin()
     {
         playingUI.SetActive(false);
         winUI.SetActive(true);
@@ -51,6 +51,7 @@ public class UIFunctions : MonoBehaviour
     {
         gameOverUI.SetActive(false);
         playingUI.SetActive(true);
+        winUI.SetActive(false);
     }
     
 }

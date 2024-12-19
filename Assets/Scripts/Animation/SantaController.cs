@@ -16,6 +16,17 @@ public class SantaController : MonoBehaviour
     [Range(0f,1f)]
     [SerializeField] private float animationFrame = 0f;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.RestartGame += RestartAnimation;
+    }
+
+    private void RestartAnimation()
+    {
+        animationFrame = 0;
+        santaAnimator.Play(bloatingAnimationName, 0, animationFrame);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject.transform.parent.gameObject);
