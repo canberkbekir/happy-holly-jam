@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class HouseSpawnManager : MonoBehaviour
 {
     
+    public event Action<HouseChecker> OnHouseSpawned;
+    
     [SerializeField] private List<GameObject> houseToSpawn;
 
     [SerializeField] private Transform housePivot;
@@ -40,6 +42,9 @@ public class HouseSpawnManager : MonoBehaviour
         int randomIndex = Random.Range(0, houseToSpawn.Count);
         currentHouse = Instantiate(houseToSpawn[randomIndex], housePivot);
         HouseChecker houseChecker = currentHouse.GetComponent<HouseChecker>();
+        
+        OnHouseSpawned!.Invoke(houseChecker);
+        
         houseChecker.HouseBuilt += SpawnHouse;
     }
 
