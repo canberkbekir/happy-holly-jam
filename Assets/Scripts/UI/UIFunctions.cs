@@ -1,4 +1,5 @@
 using System;
+using Globals;
 using UnityEngine;
 
 public class UIFunctions : MonoBehaviour
@@ -7,7 +8,17 @@ public class UIFunctions : MonoBehaviour
     [SerializeField] private GameObject playingUI;
     [SerializeField] private GameObject gameOverUI;
 
+    private void OnEnable()
+    {
+        GameManager.Instance.SatisfactionController.OnSatisfactionIsZero += GameOver;
+    }
 
+    private void GameOver()
+    {
+        gameOverUI.SetActive(true);
+        playingUI.SetActive(false);
+    }
+    
     private void Start()
     {
         mainMenuUI.SetActive(true);
